@@ -1,0 +1,46 @@
+language: python
+sudo: false
+cache: pip
+
+jobs:
+  fast_finish: true
+  include:
+    - env: TOXENV=flake8
+
+    - env: TOXENV=mypy
+
+    - env: TOXENV=pypy3
+      python: pypy3
+
+    - env: TOXENV=py35
+      after_success: &after_success
+        - pip install coveralls
+        - coveralls
+
+    - env: TOXENV=py36
+      python: "3.6"
+      after_success: *after_success
+
+    - env: TOXENV=py37
+      python: "3.7-dev"
+      after_success: *after_success
+
+python: "3.5.2"
+
+install:
+  - pip install "setuptools >= 36.2.7"
+  - pip install tox
+
+script: tox
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/aa5a289b7a0df8aefd68
+  irc:
+    channels:
+      - "chat.freenode.net#asphalt"
+    on_success: change
+    on_failure: change
+    use_notice: true
+    skip_join: true
