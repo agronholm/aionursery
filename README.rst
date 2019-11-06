@@ -5,6 +5,8 @@
   :target: https://coveralls.io/github/aiolibs/aionursery?branch=master
   :alt: Code Coverage
 
+.. warning:: This library is is no longer being maintained. Use anyio_ instead.
+
 This library implements a task supervisor concept for asyncio_ in the likeness of
 `trio's nurseries`_ nurseries. It was inspired by a `blog entry`_ by Nathaniel J. Smith.
 
@@ -36,3 +38,4 @@ Here is how to spawn background tasks with a nursery:
 .. _asyncio: https://docs.python.org/3/library/asyncio.html
 .. _blog entry: https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/
 .. _trio's nurseries: https://trio.readthedocs.io/en/latest/reference-core.html#tasks-let-you-do-multiple-things-at-once
+.. _anyio: https://github.com/agronholm/anyio
